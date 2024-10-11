@@ -2,7 +2,7 @@ export const TOPICS = {
     graveyard_fog: {
       name: "Cementerio con niebla",
       icon: "ti ti-grave",
-      description: "Add twisted trees moss covered tombstones a cloudy sky and thick fog to the background",
+      description: "agrega Cementerio tenebroso de noche",
     },
     haunted_house: {
       name: "Casa encantada",
@@ -37,17 +37,17 @@ export const TOPICS = {
     hospital_silent_hill: {
       name: "Hospital Silent Hill",
       icon: "ti ti-hospital",
-      description: "Add a decayed hospital with overturned gurneys and crawling figures to the background",
+      description: "Entrando a un hospital tenebroso de silent hill con estilo de terror ",
     },
     mansion_resident_evil: {
       name: "Mansión Resident Evil",
-      icon: "ti mansion-resident-evil",
-      description: "Agrega zombies y una mansion embrujada para hallowen realista en el fondo",
+      icon: "ti ti-building-warehouse",
+      description: "Agrega la masion de resident evil 7 y niebla para el fondo",
     },
     space_station: {
       name: "Estación espacial",
-      icon: "ti space-station",
-      description: "Add a dark space station with flickering lights and a stalking Xenomorph to the background",
+      icon: "ti ti-rocket",
+      description: "Agrega una estacion espacial con paredes y las paredes tienen sangre con estilo de terror",
     },
     underground_lab: {
       name: "Laboratorio subterráneo",
@@ -83,11 +83,6 @@ export const TOPICS = {
       name: "Vampiros",
       icon: "ti vampire",
       description: "Add vampires to the background",
-    },
-    custom: {
-      name: "Personalizado",
-      icon: "ti custom",
-      description: "",
     },
   } as const;
   

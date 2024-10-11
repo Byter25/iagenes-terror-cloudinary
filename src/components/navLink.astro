@@ -1,15 +1,13 @@
 ---
 const links = [
-  { name: 'Inicio', href: '/' },
-  { name: 'Acerca de', href: '/about' },
-  { name: 'Contacto', href: '/contact' }
+  { name: 'Inicio', href: '/' }
 ];
 ---
-<nav class="w-full">
+<nav>
     <ul class="w-full flex justify-center gap-5">
       {links.map(link => (
         <li>
-          <a class=" hover:text-white text-lg px-4 py-2" href={link.href}>{link.name}</a>
+          <a class=" hover:text-white uppercase font-bold px-2 py-1" href={link.href}>{link.name}</a>
         </li>
       ))}
     </ul>

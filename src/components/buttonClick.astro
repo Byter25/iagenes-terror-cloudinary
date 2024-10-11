@@ -1,11 +1,23 @@
 ---
-const {topic, icon} = Astro.props
+const { value, icon } = Astro.props;
 ---
 
-<button 
-data-topic={topic}
-  class="hover:bg-orange-600 transition-colors duration-300 ease-in-out hover:text-white  py-1 px-2 rounded font text-lg capitalize gap-2 text-left"
+<label
+  for={value}
+  class="flex cursor-pointer pb-1"
 >
-<i class={icon}/>
-  <slot />
-</button>
+  <input
+    id={value}
+    type="radio"
+    name="opciones"
+    value={value}
+    class="peer hidden"
+  />
+  <span
+    class="flex items-center w-full
+  peer-checked:bg-orange-600 peer-checked:text-white transition-all duration-200 ease-in-out hover:text-white py-1 px-2 rounded-md gap-2 justify-start"
+  >
+    <i class={icon}></i>
+    <slot />
+  </span>
+</label>
