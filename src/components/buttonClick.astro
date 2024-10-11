@@ -1,0 +1,11 @@
+---
+const {topic, icon} = Astro.props
+---
+
+<button 
+data-topic={topic}
+  class="hover:bg-orange-600 transition-colors duration-300 ease-in-out hover:text-white  py-1 px-2 rounded font text-lg capitalize gap-2 text-left"
+>
+<i class={icon}/>
+  <slot />
+</button>

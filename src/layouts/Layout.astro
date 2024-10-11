@@ -1,0 +1,24 @@
+---
+import Heading from "fulldev-ui/components/Heading.astro"
+import NavLink from "../components/navLink.astro"
+const {title} = Astro.props
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-zinc-900  text-gray-300">
+		<header class="w-full px-4 py-2">
+			<h1 class="text-orange-600 text-center text-4xl font-bold">IAGENES DE TERROR</h1>
+			<NavLink/>
+		</header>
+		<main class="w-full flex flex-col items-center justify-center h-full">
+            <slot/>
+        </main>
+	</body>
+</html>
