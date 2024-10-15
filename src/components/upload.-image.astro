@@ -1,30 +1,32 @@
 ---
 import { CldUploadWidget } from "astro-cloudinary";
 ---
+
 <!-- https://res.cloudinary.com/dyyhvdbdi/image/upload/v1728513235/pnnaudjj5wufdoknotmk.gif -->
 <CldUploadWidget
   id="upload-events"
   uploadPreset="no-firme"
   options={{
-    sources:["local"],
-    multiple:false,
-    maxFiles:1,
-    language:"es",
-    text:{
-      es:{
-        or:"o",
-        menu:{
-          files:"Subir desde tu dispositivo"
+    sources: ["local"],
+    multiple: false,
+    maxFiles: 1,
+    language: "es",
+    text: {
+      es: {
+        or: "o",
+        menu: {
+          files: "Subir desde tu dispositivo",
         },
-        local:{
-          "browse":"Seleccionar",
-          "dd_title_single":"Arrastra tu imagen aqui"
-        }
-      }
-    }
-  }}>
+        local: {
+          browse: "Seleccionar",
+          dd_title_single: "Arrastra tu imagen aqui",
+        },
+      },
+    },
+  }}
+>
   <button
-    class="text-xl py-2 px-4 bg-orange-700 uppercase font-bold rounded-md hover:text-white active:bg-orange-600 shadow-md shadow-black"
+    class="py-2 px-4 bg-orange-700 uppercase font-bold rounded-md hover:text-white active:bg-orange-600 shadow-md shadow-black"
     >CARGAR IMAGEN</button
   >
 </CldUploadWidget>
@@ -34,10 +36,10 @@ import { CldUploadWidget } from "astro-cloudinary";
 
   if (widget) {
     widget.addEventListener("clduploadwidget:success", ((
-      e: CustomEvent<{ info: { public_id: string}}>
+      e: CustomEvent<{ info: { public_id: string } }>
     ) => {
-      const publicId = e.detail.info.public_id
-      navigate(`/photo?id=${publicId}`)
+      const publicId = e.detail.info.public_id;
+      navigate(`/replaceBackground?id=${publicId}`);
     }) as EventListener);
   }
 </script>

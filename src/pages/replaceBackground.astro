@@ -11,13 +11,23 @@ type TopicKey = keyof typeof TOPICS;
 const url = getCldImageUrl({ src: id });
 ---
 
-<Layout title="foto">
-  <div class="max-w-full flex flex-col md:flex-row justify-center gap-x-4" data-id={id}>
-    <input type="checkbox" name="menu-left" class="peer hidden" id="menu-left">
+<Layout title="remplaza tu background">
+  <main
+    class="max-w-5xl flex flex-col md:flex-row justify-center gap-x-4 p-5"
+    data-id={id}
+  >
+    <input
+      type="checkbox"
+      name="menu-left"
+      class="peer hidden"
+      id="menu-left"
+    />
     <label for="menu-left" class="md:hidden p-2">
-      <i class="ti ti-layout-sidebar-left-expand "/>Opciones Halloween
+      <i class="ti ti-layout-sidebar-left-expand"></i>TEMA HALLOWEEN
     </label>
-    <nav class="peer-checked:left-0 fixed h-full top-0 md:relative md:h-auto flex flex-col -left-full md:left-0 bg-zinc-800 p-2 rounded-md z-10 transition-all duration-300 ease-in-out">
+    <nav
+      class="peer-checked:left-0 fixed h-full top-0 md:relative md:h-auto flex flex-col -left-full md:left-0 bg-zinc-800 p-2 rounded-md z-10 transition-all duration-300 ease-in-out"
+    >
       <label for="menu-left" class="md:hidden">
         <i class="ti ti-x text-3xl"></i>
       </label>
@@ -30,12 +40,12 @@ const url = getCldImageUrl({ src: id });
         ))
       }
     </nav>
-    <div class="">
-      <two-up class="rounded-lg overflow-hidden w-full md:h-[600px]">
-        <img id="original" class="w-full " src={url} />
-        <img id="preview" class="h-full" src={url} />
+    <div>
+      <two-up class="rounded-lg overflow-hidden max-w-sm md:max-w-5xl">
+        <img id="original" class="max-h-96" src={url} />
+        <img id="preview" class="max-h-96" src={url} />
       </two-up>
-      <div class="flex gap-2 mt-2">
+      <div class="flex gap-2 mt-2 relative">
         <input
           type="radio"
           id="custom"
@@ -47,41 +57,46 @@ const url = getCldImageUrl({ src: id });
         <input
           id="inputPromt"
           type="text"
-          class="bg-zinc-800 peer-checked:bg-zinc-700 w-full py-2 px-4 rounded-md  bg-transparent text-white"
+          class="bg-zinc-800 peer-checked:bg-zinc-700 w-full py-2 px-4 rounded-md bg-transparent text-white"
           placeholder="Escribele a la ia"
         />
-        <button class="bg-zinc-800 py-2 px-4 rounded-md active:bg-orange-700">Enviar</button>
+        <button class="bg-zinc-800 py-2 px-4 rounded-md active:bg-orange-700"
+          >Enviar</button
+        >
       </div>
-      <small>{url}</small>
+      <small
+        class="text-gray-500 text-sm block overflow-hidden whitespace-pre-line overflow-ellipsis"
+        >{url}</small
+      >
     </div>
-  </div>
+  </main>
 </Layout>
 <script>
   import { getCldImageUrl } from "astro-cloudinary/helpers";
   import { TOPICS } from "../models/topics";
   import "two-up-element";
 
-  const id = document.querySelector("div")?.getAttribute("data-id") ?? "";
+  const id = document.querySelector("main")?.getAttribute("data-id") ?? "";
   const preview = document.getElementById("preview") as HTMLImageElement;
   const inputPromt = document.getElementById("inputPromt") as HTMLInputElement;
   const custom = document.getElementById("custom") as HTMLInputElement;
   const btnEnviar = document.querySelector("button");
   btnEnviar?.addEventListener("click", () => {
     const prompt = inputPromt.value;
-    if(prompt=="" || prompt==null) return
+    if (prompt == "" || prompt == null) return;
     const url = getCldImageUrl({
-        src: id,
-        replaceBackground: prompt,
-        art: "zorro",
-      });
-
-      preview.style.opacity = ".3";
-
-      preview.src = url;
-      preview.onload = () => {
-        preview.style.opacity = "1";
-      };
+      src: id,
+      replaceBackground: prompt,
+      art: "zorro",
     });
+
+    preview.style.opacity = ".3";
+
+    preview.src = url;
+    preview.onload = () => {
+      preview.style.opacity = "1";
+    };
+  });
 
   inputPromt.addEventListener("click", () => {
     custom.checked = true;

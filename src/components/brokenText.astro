@@ -1,0 +1,85 @@
+---
+interface Props {
+  text: string;
+  textColor?: string;
+  shadowColor1: string;
+  shadowColor2?: string;
+}
+
+const { text, textColor, shadowColor1, shadowColor2 } = Astro.props;
+const letters = text.split("");
+
+// Función para generar los delays pares
+const generateEvenDelays = (min: number, max: number) => {
+  const delays = [];
+  for (let i = min; i <= max; i += 200) {
+    delays.push(i);
+  }
+  return delays;
+};
+
+// Generar los delays pares entre 200 ms y 1600 ms
+const delayValues = generateEvenDelays(200, 1600);
+---
+
+<div class="text-gray-500 flex space-x-1 text-3xl md:text-5xl">
+  {
+    letters.map((letter) => {
+      // Seleccionar un delay aleatorio de los valores pares
+      const randomDelay =
+        delayValues[Math.floor(Math.random() * delayValues.length)];
+      return (
+        <p
+          class="text-white p-2 broken-text"
+          style={`animation-delay: ${randomDelay}ms; --letter-color: ${textColor}; --shadow-color1:${shadowColor1}; --shadow-color2:${shadowColor2}`}
+        >
+          {letter}
+        </p>
+      );
+    })
+  }
+</div>
+<style>
+  @keyframes break {
+    0% {
+      text-shadow: none;
+    }
+    10% {
+      text-shadow: none;
+    }
+    20% {
+      color: var(--letter-color);
+      text-shadow:
+        0 0 1vw var(--shadow-color1),
+        0 0 3vw var(--shadow-color2);
+    }
+    30% {
+      text-shadow: none;
+    }
+    35% {
+      color: var(--letter-color);
+      text-shadow:
+        0 0 1vw var(--shadow-color1),
+        0 0 3vw var(--shadow-color2);
+    }
+    70% {
+      text-shadow: none;
+    }
+    85% {
+      color: var(--letter-color);
+      text-shadow:
+        0 0 1vw var(--shadow-color1),
+        0 0 3vw var(--shadow-color2);
+    }
+    90% {
+      text-shadow: none;
+    }
+    100% {
+      text-shadow: none;
+    }
+  }
+
+  .broken-text {
+    animation: break 1s infinite linear;
+  }
+</style>
