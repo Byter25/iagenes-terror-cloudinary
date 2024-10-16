@@ -40,6 +40,16 @@ const delayValues = generateEvenDelays(200, 1600);
   }
 </div>
 <style>
+  @font-face {
+    font-family: 'ScaryHalloween';
+    src: url('ScaryHalloween.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    font-family: 'ScaryHalloween', sans-serif;
+}
   @keyframes break {
     0% {
       text-shadow: none;
@@ -80,6 +90,6 @@ const delayValues = generateEvenDelays(200, 1600);
   }
 
   .broken-text {
-    animation: break 1s infinite linear;
+    animation: break 3.5s infinite linear;
   }
 </style>

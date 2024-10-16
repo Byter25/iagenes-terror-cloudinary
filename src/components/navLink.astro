@@ -1,14 +1,19 @@
 ---
-const links = [{ name: "Inicio", href: "/" }];
+const links = [
+  { name: "Inicio", href: "/" },
+  { name: "Reemplazar Fondo", href: "/" },
+  { name: "Generar Video", href: "/" }
+
+];
 ---
 
 <nav>
-  <ul class="w-full flex justify-center gap-5">
+  <ul class="w-full flex justify-center gap-5 rounded-md bg-zinc-800 p-2">
     {
       links.map((link) => (
         <li>
           <a
-            class=" hover:text-white uppercase font-bold px-2 py-1"
+            class=" hover:text-white uppercase font-bold px-2 py-1 hover:bg-orange-700 rounded-md ease-in-out transition-color duration-300"
             href={link.href}
           >
             {link.name}

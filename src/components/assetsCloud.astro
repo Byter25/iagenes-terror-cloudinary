@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import { CldImage } from "astro-cloudinary";
+const assets = await getCollection("images");
+---
+
+<ul class="h-72 md:h-[500px] overflow-y-scroll grid grid-cols-3 gap-3 grid-wrap">
+  {
+    assets.map((asset) => {
+      return (
+        <a href={`/replaceBackground?id=${asset.data.public_id}`}>
+          <li>
+            <CldImage
+              src={asset.data.public_id}
+              width={100}
+              height={100}
+              crop={{
+                type: "fill",
+                source: true,
+              }}
+            />
+          </li>
+        </a>
+      );
+    })
+  }
+</ul>
